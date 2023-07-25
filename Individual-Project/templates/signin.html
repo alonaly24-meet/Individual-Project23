@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signup</title>
+    <title>Signin</title>
 </head>
 <body>
-    <form method="post" action="/signup">
+    <form method="post" action="/">
         <!-- Heading -->
         <h4>
-            Create an account
+        Log in to your account
         </h4>
 
         <!-- Subheading -->
         <p >
-            Please fill up your information below to sign up.
+        Please fill up your information below to sign in.
         </p>
 
         <!-- Email -->
@@ -32,21 +32,17 @@
             </div>
         </div>
         
-        <!-- full name -->
-        <div>
-            <label>full_name*</label>
-            <div class="input-group">
-                <input type="full_name"  name="full_name" required>
-            </div>
-        </div>
-
-        
         <!-- Button -->
         <div>
             <input type="submit"/>
         </div>
     </form>
     <br>
-    <a href="personal_page"><button>signin</button></a>
+    <a href="/signup"><button>signup</button></a>
+
+<form method="post" action="/signout">
+        <input type="submit" value="Sign Out">
+    </form>
+
 </body>
 </html>
