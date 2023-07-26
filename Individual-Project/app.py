@@ -114,6 +114,7 @@ def survey():
         consume_other_animal = request.form.get('consume_other_animal') == 'yes'
         waste_generation = float(request.form['waste_generation'])
         carbon_footprint = calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_efficiency, consume_beef, consume_dairy, consume_other_animal, waste_generation)
+        login_session['carbon_footprint'] = carbon_footprint
 
         return render_template('result.html', carbon_footprint=carbon_footprint)
     else:
@@ -121,13 +122,10 @@ def survey():
         return render_template('survey.html')
 
 def calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_efficiency, consume_beef, consume_dairy, consume_other_animal, waste_generation):
-    # Perform calculations for transportation emissions
     transportation_emissions = (distance_traveled * 0.621371) / fuel_efficiency * 19.6  # Convert km to miles
 
-    # Perform calculations for electricity emissions
     electricity_emissions = electricity_usage * 0.889  # Assumes 0.889 kg CO2e per kWh
 
-    # Perform calculations for diet emissions
     diet_emissions = 0
     if consume_beef:
         diet_emissions += 6.9  # kg CO2e per kg of beef consumed
@@ -136,12 +134,33 @@ def calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_effici
     if consume_other_animal:
         diet_emissions += 3.3  # kg CO2e per kg of other animal products consumed
 
-    # Perform calculations for waste emissions
     waste_emissions = waste_generation * 0.77  # Assumes 0.77 kg CO2e per kg of waste generated
 
-    # Calculate total carbon footprint
     total_carbon_footprint = transportation_emissions + electricity_emissions + diet_emissions + waste_emissions
     return total_carbon_footprint
+
+
+@app.route('/planets')
+def planets():
+    user_carbon_footprint = request.args.get('carbon_footprint', type=float)
+    planets_needed = request.args.get('planets_needed', type=float)
+    carbon_footprint = login_session['carbon_footprint']
+    # i need this according to my users carbon footprint!
+    global_average_carbon_footprint = 7
+
+    # Ecological capacity of Earth (in global hectares per person per year)
+    ecological_capacity_earth = 1.7
+
+    # Calculate the ratio of user's carbon footprint to the global average
+    carbon_footprint_ratio = carbon_footprint / global_average_carbon_footprint
+
+    # Calculate the number of planets needed
+    planets_needed = carbon_footprint_ratio / ecological_capacity_earth
+    login_session['planets_needed'] = planets_needed
+
+    # Return the result
+    return render_template('planets.html', planets_needed=planets_needed)
+
 
 #Code goes above here
 
