@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carbon Footprint Calculator</title>
+</head>
+<body>
+    <h2>Carbon Footprint Calculator</h2>
+    <form method="post" action="/survey">
+        <!-- Electricity Usage -->
+        <label>Electricity Usage (in hours):</label>
+        <input type="number" name="electricity_usage" required>
+        <br>
+
+        <!-- Transportation -->
+        <label>Average daily distance traveled by car (in km):</label>
+        <input type="number" name="distance_traveled" step="0.01" required>
+        <br>
+        <label>Fuel efficiency of your car (in miles per gallon, MPG):</label>
+        <input type="number" name="fuel_efficiency" step="0.01" required>
+        <br>
+
+        <!-- Diet -->
+        <h3>Diet:</h3>
+        <label>Do you consume beef?</label>
+        <input type="radio" name="consume_beef" value="yes" required> Yes
+        <input type="radio" name="consume_beef" value="no" required> No
+        <br>
+        <label>Do you consume dairy products?</label>
+        <input type="radio" name="consume_dairy" value="yes" required> Yes
+        <input type="radio" name="consume_dairy" value="no" required> No
+        <br>
+        <label>Do you consume other animal products?</label>
+        <input type="radio" name="consume_other_animal" value="yes" required> Yes
+        <input type="radio" name="consume_other_animal" value="no" required> No
+        <br>
+
+        <!-- Waste Generation -->
+        <label>One kg of waste generation per day:</label>
+        <input type="number" name="waste_generation" step="0.01" required>
+        <br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Calculate Carbon Footprint">
+    </form>
+</body>
+</html>

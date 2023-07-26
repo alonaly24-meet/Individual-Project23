@@ -96,18 +96,52 @@ def personal_page():
     
     return render_template("personal_page.html", checked_items=checked_items)
 
-@app.route("/survey",methods=["GET","POST"])
-def survey():
-    if request.method == 'POST':
-        return render_template("tips.html")
-    else:
-        return render_template("tips.html")
-
 @app.route('/signout')
 def signout():
     login_session['user'] = None
     auth.current_user = None
     return redirect(url_for('signin'))
+
+
+@app.route('/survey', methods=['GET', 'POST'])
+def survey():
+    if request.method == 'POST':
+        electricity_usage = int(request.form['electricity_usage'])
+        distance_traveled = float(request.form['distance_traveled'])
+        fuel_efficiency = float(request.form['fuel_efficiency'])
+        consume_beef = request.form.get('consume_beef') == 'yes'
+        consume_dairy = request.form.get('consume_dairy') == 'yes'
+        consume_other_animal = request.form.get('consume_other_animal') == 'yes'
+        waste_generation = float(request.form['waste_generation'])
+        carbon_footprint = calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_efficiency, consume_beef, consume_dairy, consume_other_animal, waste_generation)
+
+        return render_template('result.html', carbon_footprint=carbon_footprint)
+    else:
+    
+        return render_template('survey.html')
+
+def calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_efficiency, consume_beef, consume_dairy, consume_other_animal, waste_generation):
+    # Perform calculations for transportation emissions
+    transportation_emissions = (distance_traveled * 0.621371) / fuel_efficiency * 19.6  # Convert km to miles
+
+    # Perform calculations for electricity emissions
+    electricity_emissions = electricity_usage * 0.889  # Assumes 0.889 kg CO2e per kWh
+
+    # Perform calculations for diet emissions
+    diet_emissions = 0
+    if consume_beef:
+        diet_emissions += 6.9  # kg CO2e per kg of beef consumed
+    if consume_dairy:
+        diet_emissions += 2.6  # kg CO2e per kg of dairy consumed
+    if consume_other_animal:
+        diet_emissions += 3.3  # kg CO2e per kg of other animal products consumed
+
+    # Perform calculations for waste emissions
+    waste_emissions = waste_generation * 0.77  # Assumes 0.77 kg CO2e per kg of waste generated
+
+    # Calculate total carbon footprint
+    total_carbon_footprint = transportation_emissions + electricity_emissions + diet_emissions + waste_emissions
+    return total_carbon_footprint
 
 #Code goes above here
 
