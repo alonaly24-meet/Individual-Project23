@@ -5,8 +5,57 @@
     <title>Title</title>
 </head>
 <body>
-        <form method="post" action="/">
+        <form method="post" action="/personal_page">
     <p>hi</p>
+
+    <h1>My Checklist</h1>
+
+            <label>
+            <input type="checkbox" name="item1" {% if checked_items.item1 %}checked{% endif %}>
+            Conserve Energy: Turn off lights, appliances, and electronics when not in use, and consider using energy-efficient LED bulbs.
+        </label>
+
+        <br>
+
+        <label>
+            <input type="checkbox" name="item2" {% if checked_items.item2 %}checked{% endif %}>
+            Support Local and Organic: Buy locally-produced and organic foods to reduce the carbon footprint of transportation and support sustainable farming practices.
+        </label>
+        <br>
+
+        <label>
+            <input type="checkbox" name="item3" {% if checked_items.item3 %}checked{% endif %}>
+            Choose Sustainable Fashion: Opt for eco-friendly and ethically-made clothing, and consider buying second-hand items.
+        </label>
+        <br>
+
+        <label>
+            <input type="checkbox" name="item4" {% if checked_items.item4 %}checked{% endif %}>
+            Minimize Food Waste: Plan meals, store food properly, and donate excess food to reduce food waste.
+        </label>
+        <br>
+
+        <label>
+            <input type="checkbox" name="item5" {% if checked_items.item5 %}checked{% endif %}>
+            Go Paperless: Opt for digital versions of bills, documents, and receipts to reduce paper consumption.
+        </label>
+        <br>
+
+        <label>
+            <input type="checkbox" name="item6" {% if checked_items.item6 %}checked{% endif %}>
+            Practice Mindful Consumption: Before making a purchase, consider whether you really need the item and if it aligns with your values.
+        </label>
+        <br>
+
+        <label>
+            <input type="checkbox" name="item7" {% if checked_items.item7 %}checked{% endif %}>
+            Reduce Single-Use Plastics: Say no to plastic straws, utensils, and other single-use items. Repair and Upcycle: Repair broken items or give them new life through upcycling instead of throwing them away.
+        </label>
+        <br>
+
+    <input type="submit" value="Submit Checklist">
+
+
 </form>
     </body>
 
