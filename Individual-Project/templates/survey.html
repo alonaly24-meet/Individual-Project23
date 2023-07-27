@@ -1,54 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url("https://cdn.theatlantic.com/thumbor/o_l5yEepxoVf13YFaI4XQWKJ-NI=/900x592/media/img/photo/2011/11/recycling-around-the-world/r01_RTR2TNVA/original.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carbon-calculator {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #444;
+        }
+
+        input[type="number"],
+        input[type="radio"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .radio-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
-    <center>
+    <div class="carbon-calculator">
+        <h2>Carbon Footprint Calculator</h2>
+        <form method="post" action="/survey">
+            <!-- Electricity Usage -->
+            <label>Electricity Usage (in hours):</label>
+            <input type="number" name="electricity_usage" required>
 
-    <h2>Carbon Footprint Calculator</h2>
-    <form method="post" action="/survey">
-        <!-- Electricity Usage -->
-        <label>Electricity Usage (in hours):</label>
-        <input type="number" name="electricity_usage" required>
-        <br>
+            <!-- Transportation -->
+            <label>Average daily distance traveled by car (in km):</label>
+            <input type="number" name="distance_traveled" step="0.01" required>
+            <br>
+            <label>Fuel efficiency of your car (in miles per gallon, MPG):</label>
+            <input type="number" name="fuel_efficiency" step="0.01" required>
+            <br>
 
-        <!-- Transportation -->
-        <label>Average daily distance traveled by car (in km):</label>
-        <input type="number" name="distance_traveled" step="0.01" required>
-        <br>
-        <label>Fuel efficiency of your car (in miles per gallon, MPG):</label>
-        <input type="number" name="fuel_efficiency" step="0.01" required>
-        <br>
+            <!-- Diet -->
+            <h3>Diet:</h3>
+            <div class="radio-container">
+                <label>Do you consume beef?</label>
+                <input type="radio" name="consume_beef" value="yes" required> Yes
+                <input type="radio" name="consume_beef" value="no" required> No
+            </div>
+            <div class="radio-container">
+                <label>Do you consume dairy products?</label>
+                <input type="radio" name="consume_dairy" value="yes" required> Yes
+                <input type="radio" name="consume_dairy" value="no" required> No
+            </div>
+            <div class="radio-container">
+                <label>Do you consume other animal products?</label>
+                <input type="radio" name="consume_other_animal" value="yes" required> Yes
+                <input type="radio" name="consume_other_animal" value="no" required> No
+            </div>
 
-        <!-- Diet -->
-        <h3>Diet:</h3>
-        <label>Do you consume beef?</label>
-        <input type="radio" name="consume_beef" value="yes" required> Yes
-        <input type="radio" name="consume_beef" value="no" required> No
-        <br>
-        <label>Do you consume dairy products?</label>
-        <input type="radio" name="consume_dairy" value="yes" required> Yes
-        <input type="radio" name="consume_dairy" value="no" required> No
-        <br>
-        <label>Do you consume other animal products?</label>
-        <input type="radio" name="consume_other_animal" value="yes" required> Yes
-        <input type="radio" name="consume_other_animal" value="no" required> No
-        <br>
+            <!-- Waste Generation -->
+            <label>One kg of waste generation per day:</label>
+            <input type="number" name="waste_generation" step="0.01" required>
+            <br>
 
-        <!-- Waste Generation -->
-        <label>One kg of waste generation per day:</label>
-        <input type="number" name="waste_generation" step="0.01" required>
-        <br>
-
-        <!-- Submit Button -->
-        <input type="submit" value="Calculate Carbon Footprint">
-        </center
-    </form>
-      <link href="style.css" rel="stylesheet" type="text/css" />
-
+            <!-- Submit Button -->
+            <input type="submit" value="Calculate Carbon Footprint">
+        </form>
+    </div>
 </body>
+
 </html>

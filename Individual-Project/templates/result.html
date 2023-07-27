@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<center>
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Carbon Footprint Result</title>
-</head>
-<body>
-    <h2>Your Carbon Footprint</h2>
-    <p>Your total carbon footprint is: {{ carbon_footprint }} kg CO2e</p>
-    <h2>what would happen if everyone lived like you?</h2>
-    <a href="/planets" >planets</a>
-    </center
-      <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url("https://i0.wp.com/blog.frontiersin.org/wp-content/uploads/2022/03/frontiers-in-remote-sensing-global-forest-fires-map.png?fit=1920%2C1080&ssl=1");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .carbon-result {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carbon-result">
+        <h2>Your Carbon Footprint</h2>
+        <p>Your total carbon footprint is: {{ carbon_footprint }} kg CO2e</p>
+        <h2>What would happen if everyone lived like you?</h2>
+        <a href="/planets">Planets</a>
+    </div>
 </body>
+
 </html>

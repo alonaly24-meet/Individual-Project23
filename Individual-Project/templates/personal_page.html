@@ -1,66 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <center>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Title</title>
-</head>
-<body>
-        <form method="post" action="/personal_page">
-    <p>we organized a list of tips to make your life greener, you can check the boxes and we will save your progress</p>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://media.istockphoto.com/id/629554844/photo/plastic-bottle-recycling.jpg?s=170667a&w=0&k=20&c=COk1FhA_1aYdcvjIHeTurF3hILxzo7cVoGNw6GHF0wI=")
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    <h1>My Checklist:</h1>
+        center {
+            display: block;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            margin: 20px auto 0;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form method="post" action="/personal_page">
+            <p>We organized a list of tips to make your life greener. You can check the boxes, and we will save your progress.</p>
+
+            <h1>My Checklist:</h1>
 
             <label>
-            <input type="checkbox" name="item1" {% if checked_items.item1 %}checked{% endif %}>
-            Conserve Energy: Turn off lights, appliances, and electronics when not in use, and consider using energy-efficient LED bulbs.
-        </label>
+                <input type="checkbox" name="item1" {% if checked_items.item1 %}checked{% endif %}>
+                Conserve Energy: Turn off lights, appliances, and electronics when not in use, and consider using energy-efficient LED bulbs.
+            </label>
 
-        <br>
+            <label>
+                <input type="checkbox" name="item2" {% if checked_items.item2 %}checked{% endif %}>
+                Support Local and Organic: Buy locally-produced and organic foods to reduce the carbon footprint of transportation and support sustainable farming practices.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item2" {% if checked_items.item2 %}checked{% endif %}>
-            Support Local and Organic: Buy locally-produced and organic foods to reduce the carbon footprint of transportation and support sustainable farming practices.
-        </label>
-        <br>
+            <label>
+                <input type="checkbox" name="item3" {% if checked_items.item3 %}checked{% endif %}>
+                Choose Sustainable Fashion: Opt for eco-friendly and ethically-made clothing, and consider buying second-hand items.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item3" {% if checked_items.item3 %}checked{% endif %}>
-            Choose Sustainable Fashion: Opt for eco-friendly and ethically-made clothing, and consider buying second-hand items.
-        </label>
-        <br>
+            <label>
+                <input type="checkbox" name="item4" {% if checked_items.item4 %}checked{% endif %}>
+                Minimize Food Waste: Plan meals, store food properly, and donate excess food to reduce food waste.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item4" {% if checked_items.item4 %}checked{% endif %}>
-            Minimize Food Waste: Plan meals, store food properly, and donate excess food to reduce food waste.
-        </label>
-        <br>
+            <label>
+                <input type="checkbox" name="item5" {% if checked_items.item5 %}checked{% endif %}>
+                Go Paperless: Opt for digital versions of bills, documents, and receipts to reduce paper consumption.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item5" {% if checked_items.item5 %}checked{% endif %}>
-            Go Paperless: Opt for digital versions of bills, documents, and receipts to reduce paper consumption.
-        </label>
-        <br>
+            <label>
+                <input type="checkbox" name="item6" {% if checked_items.item6 %}checked{% endif %}>
+                Practice Mindful Consumption: Before making a purchase, consider whether you really need the item and if it aligns with your values.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item6" {% if checked_items.item6 %}checked{% endif %}>
-            Practice Mindful Consumption: Before making a purchase, consider whether you really need the item and if it aligns with your values.
-        </label>
-        <br>
+            <label>
+                <input type="checkbox" name="item7" {% if checked_items.item7 %}checked{% endif %}>
+                Reduce Single-Use Plastics: Say no to plastic straws, utensils, and other single-use items. Repair and Upcycle: Repair broken items or give them new life through upcycling instead of throwing them away.
+            </label>
 
-        <label>
-            <input type="checkbox" name="item7" {% if checked_items.item7 %}checked{% endif %}>
-            Reduce Single-Use Plastics: Say no to plastic straws, utensils, and other single-use items. Repair and Upcycle: Repair broken items or give them new life through upcycling instead of throwing them away.
-        </label>
-        <br>
-
-    <input type="submit" value="Submit Checklist">
-</center
-  <link href="style.css" rel="stylesheet" type="text/css" />
-
-</form>
-    </body>
+            <input type="submit" value="Submit Checklist">
+        </form>
+    </center>
+</body>
 
 </html>

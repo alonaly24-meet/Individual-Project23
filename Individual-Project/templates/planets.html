@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <center>
-
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Planet Calculator</title>
-</head>
-<body>
-    <img src='{{api_img}}'>
-    <h1>this is where were gonna need to live soon^^</h1>
-    <h1> Planets Needed:</h1>
-    <p>If everyone lived like you, we would need {{ planets_needed }} planets earth!</p>
-    </center
-      <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url("https://exoplanets.nasa.gov/internal_resources/1755")
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .planet-calculator {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="planet-calculator">
+        <img src="{{api_img}}" alt="Planet Image">
+        <h1>This is where we're gonna need to live soon</h1>
+        <h1>Planets Needed:</h1>
+        <h1>If everyone lived like you, we would need <strong>{{ planets_needed }}</strong> Earth planets!</h1>
+<a href="{{ url_for('personal_page') }}">Click here for tips to have a greener lifestyle</a>
+
+    </div>
 </body>
+
 </html>
