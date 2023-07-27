@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
 import pyrebase
+import requests
+import json
+
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'super-secret-key'
@@ -142,6 +145,10 @@ def calculate_carbon_footprint(electricity_usage, distance_traveled, fuel_effici
 
 @app.route('/planets')
 def planets():
+
+    response=requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=DEMO_KEY")
+    python_dict=json.loads(response.content)
+    api_img=python_dict["photos"][0]["img_src"]
     user_carbon_footprint = request.args.get('carbon_footprint', type=float)
     planets_needed = request.args.get('planets_needed', type=float)
     carbon_footprint = login_session['carbon_footprint']
@@ -159,7 +166,7 @@ def planets():
     login_session['planets_needed'] = planets_needed
 
     # Return the result
-    return render_template('planets.html', planets_needed=planets_needed)
+    return render_template('planets.html', planets_needed=planets_needed,api_img=api_img)
 
 
 #Code goes above here
